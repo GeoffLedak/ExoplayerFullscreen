@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -149,11 +148,11 @@ public class MainActivity extends AppCompatActivity {
             initFullscreenDialog();
             initFullscreenButton();
 
-            String livestreamUrl = "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8";
+            String streamUrl = "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8";
             String userAgent = Util.getUserAgent(MainActivity.this, getApplicationContext().getApplicationInfo().packageName);
             DefaultHttpDataSourceFactory httpDataSourceFactory = new DefaultHttpDataSourceFactory(userAgent, null, DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS, DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS, true);
             DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(MainActivity.this, null, httpDataSourceFactory);
-            Uri daUri = Uri.parse(livestreamUrl);
+            Uri daUri = Uri.parse(streamUrl);
 
             mVideoSource = new HlsMediaSource(daUri, dataSourceFactory, 1, null, null);
         }
