@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             public void onBackPressed() {
                 if (mExoPlayerFullscreen) {
                     ((ViewGroup) mExoPlayerView.getParent()).removeView(mExoPlayerView);
-                    ((RelativeLayout) MainActivity.this.findViewById(R.id.main_media_frame)).addView(mExoPlayerView);
+                    ((FrameLayout) MainActivity.this.findViewById(R.id.main_media_frame)).addView(mExoPlayerView);
                     mExoPlayerFullscreen = false;
                     mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_fullscreen_expand));
 
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     mFullScreenDialog.show();
                 } else {
                     ((ViewGroup) mExoPlayerView.getParent()).removeView(mExoPlayerView);
-                    ((RelativeLayout) findViewById(R.id.main_media_frame)).addView(mExoPlayerView);
+                    ((FrameLayout) findViewById(R.id.main_media_frame)).addView(mExoPlayerView);
                     mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_fullscreen_expand));
                     mFullScreenDialog.onBackPressed();
                 }
