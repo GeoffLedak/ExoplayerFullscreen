@@ -84,22 +84,22 @@
             android:includeFontPadding="false"
             android:textColor="#FFBEBEBE"/>
 
-      <LinearLayout
+      <FrameLayout
           android:id="@+id/exo_fullscreen_button"
           android:layout_width="32dp"
           android:layout_height="32dp"
-          android:layout_gravity="right"
-          android:gravity="center">
+          android:layout_gravity="right">
 
          <ImageView
              android:id="@+id/exo_fullscreen_icon"
              android:layout_width="18dp"
              android:layout_height="18dp"
+             android:layout_gravity="center"
              android:adjustViewBounds="true"
              android:scaleType="fitCenter"
              android:src="@drawable/ic_fullscreen_expand"/>
 
-      </LinearLayout>
+      </FrameLayout>
 
    </LinearLayout>
 

@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private SimpleExoPlayerView mExoPlayerView;
     private MediaSource mVideoSource;
     private boolean mExoPlayerFullscreen = false;
-    private LinearLayout mFullScreenButton;
+    private FrameLayout mFullScreenButton;
     private ImageView mFullScreenIcon;
     private Dialog mFullScreenDialog;
 
