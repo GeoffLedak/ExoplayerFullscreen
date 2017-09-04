@@ -95,10 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFullscreenButton() {
 
-        PlaybackControlView poop = mExoPlayerView.findViewById(R.id.exo_controller);
-
-        mFullScreenIcon = poop.findViewById(R.id.exo_fullscreen_icon);
-        mFullScreenButton = poop.findViewById(R.id.exo_fullscreen_button);
+        PlaybackControlView controlView = mExoPlayerView.findViewById(R.id.exo_controller);
+        mFullScreenIcon = controlView.findViewById(R.id.exo_fullscreen_icon);
+        mFullScreenButton = controlView.findViewById(R.id.exo_fullscreen_button);
         mFullScreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
