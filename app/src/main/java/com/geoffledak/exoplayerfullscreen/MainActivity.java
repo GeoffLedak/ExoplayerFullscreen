@@ -75,20 +75,33 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFullscreenDialog() {
 
-        mFullScreenDialog = new Dialog(MainActivity.this, android.R.style.Theme_Black_NoTitleBar_Fullscreen) {
+        mFullScreenDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen) {
             public void onBackPressed() {
-                if (mExoPlayerFullscreen) {
-                    ((ViewGroup) mExoPlayerView.getParent()).removeView(mExoPlayerView);
-                    ((FrameLayout) MainActivity.this.findViewById(R.id.main_media_frame)).addView(mExoPlayerView);
-                    mExoPlayerFullscreen = false;
-                    mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_fullscreen_expand));
-
-                } else {
-                    mExoPlayerFullscreen = true;
-                }
+                if (mExoPlayerFullscreen)
+                    closeFullscreenDialog();
                 super.onBackPressed();
             }
         };
+    }
+
+
+    private void openFullscreenDialog() {
+
+        ((ViewGroup) mExoPlayerView.getParent()).removeView(mExoPlayerView);
+        mFullScreenDialog.addContentView(mExoPlayerView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_fullscreen_skrink));
+        mExoPlayerFullscreen = true;
+        mFullScreenDialog.show();
+    }
+
+
+    private void closeFullscreenDialog() {
+
+        ((ViewGroup) mExoPlayerView.getParent()).removeView(mExoPlayerView);
+        ((FrameLayout) findViewById(R.id.main_media_frame)).addView(mExoPlayerView);
+        mExoPlayerFullscreen = false;
+        mFullScreenDialog.dismiss();
+        mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_fullscreen_expand));
     }
 
 
@@ -100,18 +113,10 @@ public class MainActivity extends AppCompatActivity {
         mFullScreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!mExoPlayerFullscreen) {
-                    ((ViewGroup) mExoPlayerView.getParent()).removeView(mExoPlayerView);
-                    mFullScreenDialog.addContentView(mExoPlayerView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                    mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_fullscreen_skrink));
-                    mExoPlayerFullscreen = true;
-                    mFullScreenDialog.show();
-                } else {
-                    ((ViewGroup) mExoPlayerView.getParent()).removeView(mExoPlayerView);
-                    ((FrameLayout) findViewById(R.id.main_media_frame)).addView(mExoPlayerView);
-                    mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_fullscreen_expand));
-                    mFullScreenDialog.onBackPressed();
-                }
+                if (!mExoPlayerFullscreen)
+                    openFullscreenDialog();
+                else
+                    closeFullscreenDialog();
             }
         });
     }
