@@ -178,10 +178,10 @@ public class MainActivity extends AppCompatActivity {
 
         super.onPause();
 
-        mResumeWindow = mExoPlayerView.getPlayer().getCurrentWindowIndex();
-        mResumePosition = Math.max(0, mExoPlayerView.getPlayer().getContentPosition());
-
         if (mExoPlayerView != null && mExoPlayerView.getPlayer() != null) {
+            mResumeWindow = mExoPlayerView.getPlayer().getCurrentWindowIndex();
+            mResumePosition = Math.max(0, mExoPlayerView.getPlayer().getContentPosition());
+
             mExoPlayerView.getPlayer().release();
         }
 
