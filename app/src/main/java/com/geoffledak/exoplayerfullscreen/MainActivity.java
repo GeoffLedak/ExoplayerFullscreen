@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             initFullscreenDialog();
             initFullscreenButton();
 
-            String streamUrl = "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8";
+            String streamUrl = "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8";
             String userAgent = Util.getUserAgent(MainActivity.this, getApplicationContext().getApplicationInfo().packageName);
             DefaultHttpDataSourceFactory httpDataSourceFactory = new DefaultHttpDataSourceFactory(userAgent, null, DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS, DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS, true);
             DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(MainActivity.this, null, httpDataSourceFactory);
